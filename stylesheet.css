@@ -1,10 +1,11 @@
 .section {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
 }
 
-.box {
-    margin-right: 30px;
-    margin-left: 30px;
+code{
+    font-size: 16px;
 }
