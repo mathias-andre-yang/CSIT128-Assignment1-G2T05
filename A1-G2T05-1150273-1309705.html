@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <title>Document</title>
+    <title>A1-G2T05-1150273-1309705</title>
     <style>
         .theader {
             padding: 20px;
@@ -17,7 +17,10 @@
         td {
             padding: 20px;
         }
-        tr {
+        .student1 {
+            padding: 20px;
+        }
+        .student2 {
             padding: 20px;
         }
         table {
@@ -28,20 +31,20 @@
     </style>
 </head>
 <body>
-    <title class="part1">Part 1</title>
+    <h1>Part 1</h1>
     <div>
         <table border="1px solid black">
         <tr class="theader">
             <th colspan="5" >CSIT128: Assignment 1</th>
             <th colspan="2">Group G2T05</th>
         </tr>
-        <tr>
+        <tr class="student1">
             <td colspan="2" rowspan="3" >Student Number / <br> Name / Email</td>
             <td colspan="1">1309705</td>
             <td colspan="2">Lim Li Qin</td>
             <td>lql136@uowmail.edu.au</td>
         </tr>
-        <tr>
+        <tr class="student2">
             <td colspan="1">1150273</td>
             <td>Yang Jialiang Mathias Andre</td>
             <td colspan="2">jmay291@uowmail.edu.au</td>
@@ -49,9 +52,9 @@
     </table>
     </div>
 <!-------------------------------------------------------------------------------->
-    <title>
+    <h1>
         Part 2
-    </title>
+    </h1>
     <ul>
         <li><a href="#cpp">C++</a></li>
         <li><a href="#csharp">C#</a></li>
@@ -119,6 +122,49 @@ Hello World!
 &lt;/head&gt;
         </code></pre>
     </div>
+<div>
+    <h1>Part 4</h1>
+    <form>
+        <label class="name">Name: </label>
+        <input type="text" id="name">
+        <br>
+        <label class="modulecode">Module Code:</label>
+        <input type="text" id="modulecode">
+        <br>
+        <label class="currentdate">Current Date:</label>
+        <input type="text" id="currentdate" size="30" readonly>
+        <br>
+        <label class="message">Message:</label>
+        <textarea id="message" rows="3">Hello 202604</textarea>
+        <br>
+        <label class="find">Find:</label>
+        <input type="text" id="find">
+        <br>
+        <label class="replace">Replace:</label>
+        <input type="text" id="replace">
+        <br>
+        <button type="button" onclick="findAndReplace()">Find and Replace</button>
+    </form>
 
+    <script>
+        function updateDate(){
+            const currentDate = new Date();
+            const date = currentDate.getDate();
+            const months = ["January", "February", "March", "April", "May",
+             "June", "July", "August", "September", "October", "November", "December"];
+            let month = months[currentDate.getMonth()];
+            const year = currentDate.getFullYear();
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const day = days[currentDate.getDay()];
+            const time = currentDate.toLocaleString('en-GB', {hour: 'numeric', minute: '2-digit', hour12: true});
+            return formattedDate = `${date} ${month} ${year} ${day} ${time}`;
+        }
+        document.getElementById('currentdate').value = updateDate();
+
+        function findAndReplace(){
+            
+        }
+        </script>
+</div>
 </body>
 </html>
