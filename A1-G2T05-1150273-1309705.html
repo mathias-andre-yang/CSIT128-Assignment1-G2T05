@@ -125,52 +125,6 @@ Hello World!
 &lt;/head&gt;
         </code></pre>
     </div>
-<div>
-    <h1>Part 4</h1>
-    <form>
-        <label class="name">Name: </label>
-        <input type="text" id="name">
-        <br>
-        <label class="modulecode">Module Code:</label>
-        <input type="text" id="modulecode">
-        <br>
-        <label class="currentdate">Current Date:</label>
-        <input type="text" id="currentdate" size="30" readonly>
-        <br>
-        <label class="message">Message:</label>
-        <textarea id="message" rows="3">Hello 202604</textarea>
-        <br>
-        <label class="find">Find:</label>
-        <input type="text" id="find">
-        <br>
-        <label class="replace">Replace:</label>
-        <input type="text" id="replace">
-        <br>
-        <button type="button" onclick="findAndReplace()">Find and Replace</button>
-    </form>
-
-<<<<<<< HEAD
-    <script>
-        function updateDate(){
-            const currentDate = new Date();
-            const date = currentDate.getDate();
-            const months = ["January", "February", "March", "April", "May",
-             "June", "July", "August", "September", "October", "November", "December"];
-            let month = months[currentDate.getMonth()];
-            const year = currentDate.getFullYear();
-            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            const day = days[currentDate.getDay()];
-            const time = currentDate.toLocaleString('en-GB', {hour: 'numeric', minute: '2-digit', hour12: true});
-            return formattedDate = `${date} ${month} ${year} ${day} ${time}`;
-        }
-        document.getElementById('currentdate').value = updateDate();
-
-        function findAndReplace(){
-            
-        }
-        </script>
-</div>
-=======
     <h1>Part 3:University policies and services</h1>
     <br>
     <h4>PLAGIARISM</h4>
@@ -227,6 +181,49 @@ mperez@uow.edu.au
     the primary cares for those with a medical condition or disability.
     Please click <a href="https://www.uow.edu.au/about/our-people/diversity-inclusion/people-with-lived-experience-of-disability/">here</a> to read more about Disability Services.
     </pre>
->>>>>>> f156035889b7b606c585760531b1a0f957a6b33e
+    <div>
+    <h1>Part 4</h1>
+    <form>
+        <label class="name">Name: </label>
+        <input type="text" id="name">
+        <br>
+        <label class="modulecode">Module Code:</label>
+        <input type="text" id="modulecode">
+        <br>
+        <label class="currentdate">Current Date:</label>
+        <input type="text" id="currentdate" size="30" readonly>
+        <br>
+        <label class="message">Message:</label>
+        <textarea id="message" rows="3">Hello 202604</textarea>
+        <br>
+        <label class="find">Find:</label>
+        <input type="text" id="find">
+        <br>
+        <label class="replace">Replace:</label>
+        <input type="text" id="replace">
+        <br>
+        <button type="button" onclick="findAndReplace()">Find and Replace</button>
+    </form>
+
+    <script>
+        function updateDate(){
+            const currentDate = new Date();
+            const date = currentDate.getDate();
+            const months = ["January", "February", "March", "April", "May",
+             "June", "July", "August", "September", "October", "November", "December"];
+            let month = months[currentDate.getMonth()];
+            const year = currentDate.getFullYear();
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const day = days[currentDate.getDay()];
+            const time = currentDate.toLocaleString('en-GB', {hour: 'numeric', minute: '2-digit', hour12: true});
+            return formattedDate = `${date} ${month} ${year} ${day} ${time}`;
+        }
+        document.getElementById('currentdate').value = updateDate();
+
+        function findAndReplace(){
+            
+        }
+        </script>
+</div>
 </body>
 </html>
