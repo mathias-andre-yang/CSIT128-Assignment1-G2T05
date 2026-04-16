@@ -187,22 +187,49 @@ mperez@uow.edu.au
         <label class="name">Name: </label>
         <input type="text" id="name">
         <br>
+        <br>
         <label class="modulecode">Module Code:</label>
         <input type="text" id="modulecode">
+        <br>
         <br>
         <label class="currentdate">Current Date:</label>
         <input type="text" id="currentdate" size="30" readonly>
         <br>
-        <label class="message">Message:</label>
-        <textarea id="message" rows="3">Hello 202604</textarea>
+        <br>
+        <label class="message">Message:</label><br>
+        <textarea id="message" rows="3" cols="20">Hello 202604</textarea>
+        <br>
         <br>
         <label class="find">Find:</label>
         <input type="text" id="find">
         <br>
+        <br>
         <label class="replace">Replace:</label>
         <input type="text" id="replace">
         <br>
-        <button type="button" onclick="findAndReplace()">Find and Replace</button>
+        <br>
+        <button type="button" id="findAndReplacebtn" onclick="findAndReplace()">Find and Replace</button>
+        <br>
+        <br>
+        <label class="sourcelanguage">Source Language:</label>
+        <input type="radio" id="el" name="sourcelanguage" value="english" checked>
+        <label for="english" >English</label>
+        <input type="radio" id="malay" name="sourcelanguage" value="malay">
+        <label for="malay" >Malay</label>
+        <br>
+        <br>
+        <label class="targetlanguage">Target Language:</label>
+        <select id="targetlanguage">
+            <option value="chinese" selected>Chinese</option>
+            <option value="japanese">Japanese</option>
+            <option value="malay">Malay</option>
+            <option value="korean">Korean</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" id="translatebtn">Translate</button>
+        <button type="reset" id="resetbtn">Reset</button>
+
     </form>
 
     <script>
@@ -221,7 +248,15 @@ mperez@uow.edu.au
         document.getElementById('currentdate').value = updateDate();
 
         function findAndReplace(){
-            
+            const find = document.getElementById('find').value;
+            const replace = document.getElementById('replace').value;
+            const message = document.getElementById('message').value;
+
+            if(find === ""){
+                document.getElementById('replace').disabled = true;
+                return;
+            }
+
         }
         </script>
 </div>
