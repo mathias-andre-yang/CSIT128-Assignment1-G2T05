@@ -184,13 +184,17 @@ mperez@uow.edu.au
     <div>
     <h1>Part 4</h1>
     <form>
-        <label class="name">Name: </label>
-        <input type="text" id="name">
+        <div class = "box">
+            <label class="name">Name: </label>
+            <input type="text" id="name">
+            <div id="name_error" style="color: red; margin-left: 20px;"></div>
+        </div>
         <br>
-        <br>
-        <label class="modulecode">Module Code:</label>
-        <input type="text" id="modulecode">
-        <br>
+        <div class="box">
+            <label class="modulecode">Module Code:</label>
+            <input type="text" id="modulecode">
+            <div id="modulecode_error" style="color: red; margin-left: 20px;"></div>
+        </div>
         <br>
         <label class="currentdate">Current Date:</label>
         <input type="text" id="currentdate" size="30" readonly>
@@ -258,6 +262,37 @@ mperez@uow.edu.au
             }
 
         }
+
+        const name_input = document.getElementById("name");
+        const name_error = document.getElementById("name_error");
+
+        name_input.addEventListener("input", function () {
+            const value = this.value.trim();
+
+            if (!value) {
+                name_error.textContent = "Name must not be empty.";
+            } else if (/[^A-Za-z0-9 ]/.test(value)) {
+                name_error.textContent = "Name must not contain special characters";
+            } else {
+                name_error.textContent = "";
+            }
+        });
+
+        const modulecode_input = document.getElementById("modulecode");
+        const modulecode_error = document.getElementById("modulecode_error");
+
+        modulecode_input.addEventListener("input", function () {
+            const value = this.value.trim();
+
+            if (!value) {
+                modulecode_error.textContent = "";
+            } else if (!/^[A-Z]{4}[4-8]{3}$/.test(value)) {
+                modulecode_error.textContent = "Format must be 4 uppercase letters followed by 3 digits (4–8).";
+            } else {
+                modulecode_error.textContent = "";
+            }
+        });
+
         </script>
 </div>
 </body>
