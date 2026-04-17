@@ -42,7 +42,12 @@
             display: table-row;
         }
         .textinput{
-            width: 100%;
+            width: 30%;
+        }
+
+        label {
+        display: inline-block;
+        width: 150px;
         }
     </style>
 </head>
@@ -195,120 +200,67 @@ mperez@uow.edu.au
     Please click <a href="https://www.uow.edu.au/about/our-people/diversity-inclusion/people-with-lived-experience-of-disability/">here</a> to read more about Disability Services.
     </pre>
     <div>
-    <h1>Part 4</h1>
-    <form>
-        <table class = "p4form">
-            <tr class="box">
-                <td><label class="name" for="name">Name: </label></td>
-                <td><input type="text" id="name" class="textinput"></td>
-                <td id="name_error" style="color: red; margin-left: 20px;"></td>
-            </tr>
-            <tr class="box">
-                <td><label class="modulecode">Module Code:</label></td>
-                <td><input type="text" id="modulecode" class="textinput"></td>
-                <td id="modulecode_error" style="color: red; margin-left: 20px;"></td>
-            </tr>
-            <tr class="box">
-               <td><label class="currentdate">Current Date:</label></td>
-               <td><input type="text" id="currentdate" size="30" class="textinput" readonly></td>
+    <form id="myForm" action="https://translate.google.com" method="get">
+        <table class = "p4form" style="width: 720px; height: 400px;" border="solid">
+            <tr>
+                <th style="text-align: left;">Part 4</th>
             </tr>
             <tr>
-                <td><label class="message">Message:</label></td>
-                <td><textarea id="message" rows="3" cols="20" class="textinput">Hello 202604</textarea></td>
-            </tr>
-            <tr class="box">
-                <td><label class="find">Find:</label></td>
-                <td><input type="text" id="find" class="textinput"></td></td>
-            </tr>
-            <tr>
-                <td><label class="replace">Replace:</label></td>
-                <td><input type="text" id="replace" class="textinput"></td>
-            </tr>
-            <tr class="box">
                 <td>
+                    <label class="name" for="name">Name: </label>
+                    <input type="text" id="name" class="textinput">
+                    <span id="name_error" style="color: red; font-size: smaller;"></span>
+                    <br>
+                    <br>
+                    <label class="modulecode">Module Code:</label>
+                    <input type="text" id="modulecode" class="textinput">
+                    <span id="modulecode_error" style="color: red; font-size: smaller;"></span>
+                    <br>
+                    <br>
+                    <label class="currentdate">Current Date:</label>
+                    <input type="text" id="currentdate" size="30" class="textinput" readonly></td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="display: flex;">
+                    <label class="message">Message:</label>
+                    <textarea id="message" rows="3" cols="20" class="textinput" name="text">Hello 202604</textarea>
+                    </div>
+                    <br>
+                    <label class="find">Find:</label>
+                    <input type="text" id="find" class="textinput">
+                    <br>
+                    <br>
+                    <label class="replace">Replace:</label>
+                    <input type="text" id="replace" class="textinput">
                     <button type="button" id="findAndReplacebtn" onclick="findAndReplace()">Find and Replace</button>
-                </td>
-            </tr>
-            <tr class="box">
-                <td><label class="sourcelanguage">Source Language:</label></td>
-                <td>
-                    <input type="radio" id="el" name="sourcelanguage" value="english" checked>
-                    <label for="english" >English</label>
-                    <input type="radio" id="malay" name="sourcelanguage" value="malay">
-                    <label for="malay" >Malay</label>
-                </td> 
-            </tr>
-            <tr>
-                <td><label class="targetlanguage">Target Language:</label></td>
-                <td>
-                    <select id="targetlanguage">
-                        <option value="ch" selected>Chinese</option>
-                        <option value="jp">Japanese</option>
-                        <option value="ml">Malay</option>
-                        <option value="kr">Korean</option>
-                    </select>
+                    <span id="replace_num"></span>
                 </td>
             </tr>
             <tr>
-                <td><button type="submit" id="translatebtn">Translate</button></td>
-                <td><button type="reset" id="resetbtn">Reset</button></td>
+                <td>
+                    <label>Source Language:</label>
+                        <input type="radio" id="el" name="sl" value="en" checked>
+                        <label for="english" >English</label>
+                        <input type="radio" id="malay" name="sl" value="ms">
+                        <label for="malay">Malay</label>
+                    <br>
+                    <br>
+                    <label class="targetlanguage">Target Language:</label>
+                        <select id="targetlanguage" name="tl">
+                            <option value="zh-CN" selected>Chinese</option>
+                            <option value="ja">Japanese</option>
+                            <option value="ms">Malay</option>
+                            <option value="ko">Korean</option>
+                        </select>
+                    <br>
+                    <br>
+                    <button type="submit" id="translatebtn">Translate</button>
+                    <button type="button" id="resetbtn" onclick="customReset()">Reset</button>
+                </td>
             </tr> 
-        
     </table>
-    <form id="myForm">
-        <div class = "box">
-            <label class="name">Name: </label>
-            <input type="text" id="name">
-            <div id="name_error" style="color: red; margin-left: 20px;"></div>
-        </div>
-        <br>
-        <div class="box">
-            <label class="modulecode">Module Code:</label>
-            <input type="text" id="modulecode">
-            <div id="modulecode_error" style="color: red; margin-left: 20px;"></div>
-        </div>
-        <br>
-        <label class="currentdate">Current Date:</label>
-        <input type="text" id="currentdate" size="30" readonly>
-        <br>
-        <br>
-        <label class="message">Message:</label><br>
-        <textarea id="message" rows="3" cols="20">Hello 202604</textarea>
-        <br>
-        <br>
-        <label class="find">Find:</label>
-        <input type="text" id="find">
-        <br>
-        <br>
-        <label class="replace">Replace:</label>
-        <input type="text" id="replace">
-        <br>
-        <br>
-        <div class = "box">
-            <button type="button" id="findAndReplacebtn" onclick="findAndReplace()">Find and Replace</button>
-            <div id="replace_num" style="margin-left: 20px;"></div>
-        </div>
-        <br>
-        <label class="sourcelanguage">Source Language:</label>
-        <input type="radio" id="el" name="sourcelanguage" value="english" checked>
-        <label for="english" >English</label>
-        <input type="radio" id="malay" name="sourcelanguage" value="malay">
-        <label for="malay" >Malay</label>
-        <br>
-        <br>
-        <label class="targetlanguage">Target Language:</label>
-        <select id="targetlanguage">
-            <option value="chinese" selected>Chinese</option>
-            <option value="japanese">Japanese</option>
-            <option value="malay">Malay</option>
-            <option value="korean">Korean</option>
-        </select>
-        <br>
-        <br>
-        <button type="submit" id="translatebtn">Translate</button>
-        <button type="button" id="resetbtn" onclick="customReset()">Reset</button>
 
-    </form>
 
     <script>
         function updateDate(){
@@ -354,7 +306,7 @@ mperez@uow.edu.au
                 return replace_msg;
             });
 
-            replace_num.textContent = `Replaced "${find_msg}" with "${replace_msg}" ${count} times`;
+            replace_num.textContent = `Replaced "${find_msg}" ${count} times`;
         }
 
 
@@ -382,7 +334,7 @@ mperez@uow.edu.au
             if (!value) {
                 modulecode_error.textContent = "";
             } else if (!/^[A-Z]{4}[4-8]{3}$/.test(value)) {
-                modulecode_error.textContent = "Format must be 4 uppercase letters followed by 3 digits (4–8).";
+                modulecode_error.textContent = "Must be 4 uppercase letters followed by 3 digits (4–8).";
             } else {
                 modulecode_error.textContent = "";
             }
@@ -396,6 +348,7 @@ mperez@uow.edu.au
             document.getElementById('currentdate').value = updateDate()
             replace_num.textContent = ""
         }
+
 
 
 
