@@ -212,8 +212,10 @@ mperez@uow.edu.au
         <input type="text" id="replace">
         <br>
         <br>
-        <button type="button" id="findAndReplacebtn" onclick="findAndReplace()">Find and Replace</button>
-        <br>
+        <div class = "box">
+            <button type="button" id="findAndReplacebtn" onclick="findAndReplace()">Find and Replace</button>
+            <div id="replace_num" style="margin-left: 20px;"></div>
+        </div>
         <br>
         <label class="sourcelanguage">Source Language:</label>
         <input type="radio" id="el" name="sourcelanguage" value="english" checked>
@@ -265,14 +267,22 @@ mperez@uow.edu.au
         })
 
         function findAndReplace(){
+            let count = 0;
+            const replace_num = document.getElementById('replace_num')
+
             const find_msg = document.getElementById('find').value
             const replace_msg = document.getElementById('replace').value
             const message_msg = document.getElementById('message').value
 
+
             if (find_msg === "") return;
 
-            message.value = message_msg.replaceAll(find_msg, replace_msg)
+            message.value = message_msg.replaceAll(find_msg, (match) => {
+                count++;
+                return replace_msg;
+            });
 
+            replace_num.textContent = `Replaced "${find_msg}" with "${replace_msg}" ${count} times`;
         }
 
 
@@ -305,13 +315,14 @@ mperez@uow.edu.au
                 modulecode_error.textContent = "";
             }
         });
-        
+
 
         function customReset(){
             document.getElementById("myForm").reset();
             
             message.value = "Hello 202604"
             document.getElementById('currentdate').value = updateDate()
+            replace_num.textContent = ""
         }
 
 
