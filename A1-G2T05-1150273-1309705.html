@@ -255,6 +255,57 @@ mperez@uow.edu.au
             </tr> 
         
     </table>
+    <form id="myForm">
+        <div class = "box">
+            <label class="name">Name: </label>
+            <input type="text" id="name">
+            <div id="name_error" style="color: red; margin-left: 20px;"></div>
+        </div>
+        <br>
+        <div class="box">
+            <label class="modulecode">Module Code:</label>
+            <input type="text" id="modulecode">
+            <div id="modulecode_error" style="color: red; margin-left: 20px;"></div>
+        </div>
+        <br>
+        <label class="currentdate">Current Date:</label>
+        <input type="text" id="currentdate" size="30" readonly>
+        <br>
+        <br>
+        <label class="message">Message:</label><br>
+        <textarea id="message" rows="3" cols="20">Hello 202604</textarea>
+        <br>
+        <br>
+        <label class="find">Find:</label>
+        <input type="text" id="find">
+        <br>
+        <br>
+        <label class="replace">Replace:</label>
+        <input type="text" id="replace">
+        <br>
+        <br>
+        <button type="button" id="findAndReplacebtn" onclick="findAndReplace()">Find and Replace</button>
+        <br>
+        <br>
+        <label class="sourcelanguage">Source Language:</label>
+        <input type="radio" id="el" name="sourcelanguage" value="english" checked>
+        <label for="english" >English</label>
+        <input type="radio" id="malay" name="sourcelanguage" value="malay">
+        <label for="malay" >Malay</label>
+        <br>
+        <br>
+        <label class="targetlanguage">Target Language:</label>
+        <select id="targetlanguage">
+            <option value="chinese" selected>Chinese</option>
+            <option value="japanese">Japanese</option>
+            <option value="malay">Malay</option>
+            <option value="korean">Korean</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" id="translatebtn">Translate</button>
+        <button type="button" id="resetbtn" onclick="customReset()">Reset</button>
+
     </form>
 
     <script>
@@ -272,17 +323,30 @@ mperez@uow.edu.au
         }
         document.getElementById('currentdate').value = updateDate();
 
-        function findAndReplace(){
-            const find = document.getElementById('find').value;
-            const replace = document.getElementById('replace').value;
-            const message = document.getElementById('message').value;
 
-            if(find === ""){
-                document.getElementById('replace').disabled = true;
-                return;
-            }
+        const message = document.getElementById('message');
+        message.addEventListener("input", function(){
+            const value = this.value.trim()
+
+            if(!value){
+                    document.getElementById('replace').disabled = true;
+                }
+                else{
+                    document.getElementById('replace').disabled = false;
+                }
+        })
+
+        function findAndReplace(){
+            const find_msg = document.getElementById('find').value
+            const replace_msg = document.getElementById('replace').value
+            const message_msg = document.getElementById('message').value
+
+            if (find_msg === "") return;
+
+            message.value = message_msg.replaceAll(find_msg, replace_msg)
 
         }
+
 
         const name_input = document.getElementById("name");
         const name_error = document.getElementById("name_error");
@@ -313,6 +377,18 @@ mperez@uow.edu.au
                 modulecode_error.textContent = "";
             }
         });
+        
+
+        function customReset(){
+            document.getElementById("myForm").reset();
+            
+            message.value = "Hello 202604"
+            document.getElementById('currentdate').value = updateDate()
+        }
+
+
+
+
 
         </script>
 </div>
