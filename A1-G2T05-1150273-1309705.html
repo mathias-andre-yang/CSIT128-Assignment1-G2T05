@@ -18,7 +18,7 @@
             text-align: center;
             padding: 20px;
         }
-        td {
+        .p1td {
             padding: 20px;
         }
         .student1 {
@@ -31,6 +31,19 @@
             text-align: left;
             border-spacing: 0.5px;
         }
+        .p4form {
+            border-collapse: collapse;
+        }
+        td {
+            padding: 6px 10px;
+            vertical-align: middle;
+        }
+        .box {
+            display: table-row;
+        }
+        .textinput{
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -42,15 +55,15 @@
             <th colspan="2">Group G2T05</th>
         </tr>
         <tr class="student1">
-            <td colspan="2" rowspan="3" >Student Number / <br> Name / Email</td>
-            <td colspan="1">1309705</td>
-            <td colspan="2">Lim Li Qin</td>
+            <td colspan="2" rowspan="3" class="p1td" >Student Number / <br> Name / Email</td>
+            <td colspan="1" class="p1td">1309705</td>
+            <td colspan="2" class="p1td">Lim Li Qin</td>
             <td>lql136@uowmail.edu.au</td>
         </tr>
         <tr class="student2">
-            <td colspan="1">1150273</td>
-            <td>Yang Jialiang Mathias Andre</td>
-            <td colspan="2">jmay291@uowmail.edu.au</td>
+            <td colspan="1" class="p1td">1150273</td>
+            <td class="p1td">Yang Jialiang Mathias Andre</td>
+            <td colspan="2" class="p1td">jmay291@uowmail.edu.au</td>
         </tr>
     </table>
     </div>
@@ -184,56 +197,64 @@ mperez@uow.edu.au
     <div>
     <h1>Part 4</h1>
     <form>
-        <div class = "box">
-            <label class="name">Name: </label>
-            <input type="text" id="name">
-            <div id="name_error" style="color: red; margin-left: 20px;"></div>
-        </div>
-        <br>
-        <div class="box">
-            <label class="modulecode">Module Code:</label>
-            <input type="text" id="modulecode">
-            <div id="modulecode_error" style="color: red; margin-left: 20px;"></div>
-        </div>
-        <br>
-        <label class="currentdate">Current Date:</label>
-        <input type="text" id="currentdate" size="30" readonly>
-        <br>
-        <br>
-        <label class="message">Message:</label><br>
-        <textarea id="message" rows="3" cols="20">Hello 202604</textarea>
-        <br>
-        <br>
-        <label class="find">Find:</label>
-        <input type="text" id="find">
-        <br>
-        <br>
-        <label class="replace">Replace:</label>
-        <input type="text" id="replace">
-        <br>
-        <br>
-        <button type="button" id="findAndReplacebtn" onclick="findAndReplace()">Find and Replace</button>
-        <br>
-        <br>
-        <label class="sourcelanguage">Source Language:</label>
-        <input type="radio" id="el" name="sourcelanguage" value="english" checked>
-        <label for="english" >English</label>
-        <input type="radio" id="malay" name="sourcelanguage" value="malay">
-        <label for="malay" >Malay</label>
-        <br>
-        <br>
-        <label class="targetlanguage">Target Language:</label>
-        <select id="targetlanguage">
-            <option value="chinese" selected>Chinese</option>
-            <option value="japanese">Japanese</option>
-            <option value="malay">Malay</option>
-            <option value="korean">Korean</option>
-        </select>
-        <br>
-        <br>
-        <button type="submit" id="translatebtn">Translate</button>
-        <button type="reset" id="resetbtn">Reset</button>
-
+        <table class = "p4form">
+            <tr class="box">
+                <td>Name: </td>
+                <td><input type="text" id="name" class="textinput"></td>
+                <td id="name_error" style="color: red; margin-left: 20px;"></td>
+            </tr>
+            <tr class="box">
+                <td><label class="modulecode">Module Code:</label></td>
+                <td><input type="text" id="modulecode" class="textinput"></td>
+                <td id="modulecode_error" style="color: red; margin-left: 20px;"></td>
+            </tr>
+            <tr class="box">
+               <td><label class="currentdate">Current Date:</label></td>
+               <td><input type="text" id="currentdate" size="30" class="textinput" readonly></td>
+            </tr>
+            <tr>
+                <td><label class="message">Message:</label></td>
+                <td><textarea id="message" rows="3" cols="20" class="textinput">Hello 202604</textarea></td>
+            </tr>
+            <tr class="box">
+                <td><label class="find">Find:</label></td>
+                <td><input type="text" id="find" class="textinput"></td></td>
+            </tr>
+            <tr>
+                <td><label class="replace">Replace:</label></td>
+                <td><input type="text" id="replace" class="textinput"></td>
+            </tr>
+            <tr class="box">
+                <td>
+                    <button type="button" id="findAndReplacebtn" onclick="findAndReplace()">Find and Replace</button>
+                </td>
+            </tr>
+            <tr class="box">
+                <td><label class="sourcelanguage">Source Language:</label></td>
+                <td>
+                    <input type="radio" id="el" name="sourcelanguage" value="english" checked>
+                    <label for="english" >English</label>
+                    <input type="radio" id="malay" name="sourcelanguage" value="malay">
+                    <label for="malay" >Malay</label>
+                </td> 
+            </tr>
+            <tr>
+                <td><label class="targetlanguage">Target Language:</label></td>
+                <td>
+                    <select id="targetlanguage">
+                        <option value="ch" selected>Chinese</option>
+                        <option value="jp">Japanese</option>
+                        <option value="ml">Malay</option>
+                        <option value="kr">Korean</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit" id="translatebtn">Translate</button></td>
+                <td><button type="reset" id="resetbtn">Reset</button></td>
+            </tr> 
+        
+    </table>
     </form>
 
     <script>
