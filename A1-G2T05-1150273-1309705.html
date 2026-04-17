@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <title>A1-G2T05-1150273-1309705</title>
     <style>
         body, pre, h1, h2, h3, h4, h5, h6{
@@ -49,6 +48,33 @@
         display: inline-block;
         width: 150px;
         }
+
+        .section {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-left: 30px;
+        margin-bottom: 30px;
+        }
+
+        code{
+            font-size: 16px;
+        }
+
+        h4{
+            margin-bottom: 0px;
+        }
+
+        pre{
+            margin-top: 0px;
+        }
+
+        .box {
+            display: flex;
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -56,14 +82,14 @@
     <div>
         <table border="1px solid black">
         <tr class="theader">
-            <th colspan="5" >CSIT128: Assignment 1</th>
-            <th colspan="2">Group G2T05</th>
+            <th colspan="5" ><h2 style="margin: 0px;">CSIT128: Assignment 1</h2></th>
+            <th colspan="1"><h2 style="margin: 0px;">Group G2T05</h2></th>
         </tr>
         <tr class="student1">
             <td colspan="2" rowspan="3" class="p1td" >Student Number / <br> Name / Email</td>
             <td colspan="1" class="p1td">1309705</td>
-            <td colspan="2" class="p1td">Lim Li Qin</td>
-            <td>lql136@uowmail.edu.au</td>
+            <td class="p1td">Lim Li Qin</td>
+            <td colspan="2" class="p1td">lql136@uowmail.edu.au</td>
         </tr>
         <tr class="student2">
             <td colspan="1" class="p1td">1150273</td>
@@ -203,7 +229,7 @@ mperez@uow.edu.au
     <form id="myForm" action="https://translate.google.com" method="get">
         <table class = "p4form" style="width: 720px; height: 400px;" border="solid">
             <tr>
-                <th style="text-align: left;">Part 4</th>
+                <th style="text-align: left;"><h1 style="margin: 0px;">Part 4</h1></th>
             </tr>
             <tr>
                 <td>
@@ -348,11 +374,6 @@ mperez@uow.edu.au
             document.getElementById('currentdate').value = updateDate()
             replace_num.textContent = ""
         }
-
-
-
-
-
 
         </script>
 </div>
