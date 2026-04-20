@@ -227,7 +227,7 @@ mperez@uow.edu.au
     Please click <a href="https://www.uow.edu.au/about/our-people/diversity-inclusion/people-with-lived-experience-of-disability/">here</a> to read more about Disability Services.
     </pre>
     <div>
-    <form id="myForm" action="https://translate.google.com" method="get">
+    <form class="p4form"id="myForm" action="https://translate.google.com" method="get">
         <table class = "p4form" style="width: 720px; height: 400px;" border="solid">
             <tr>
                 <th style="text-align: left;"><h1 style="margin: 0px;">Part 4</h1></th>
@@ -307,15 +307,17 @@ mperez@uow.edu.au
         document.getElementById('currentdate').value = updateDate();
 
 
-        const message = document.getElementById('message');
-        message.addEventListener("input", function(){
+        const find_input = document.getElementById('find');
+        const replace_input = document.getElementById('replace');
+        replace_input.disabled = true;
+        find_input.addEventListener("input", function(){
             const value = this.value.trim()
 
-            if(!value){
-                    document.getElementById('replace').disabled = true;
+            if(value){
+                    replace_input.disabled = false;
                 }
                 else{
-                    document.getElementById('replace').disabled = false;
+                    replace_input.disabled = true;
                 }
         })
 
@@ -338,6 +340,21 @@ mperez@uow.edu.au
             replace_num.textContent = `Replaced "${find_msg}" ${count} times`;
         }
 
+
+        const message_input = document.getElementById("message");
+        const message_error = document.getElementById("message_error");
+
+        message_input.addEventListener("input", function () {
+            const value = this.value.trim();
+
+            if (!value) {
+                message_error.textContent = "Message must not be empty.";
+            } else if (/[^A-Za-z0-9 ]/.test(value)) {
+                message_error.textContent = "Message must not contain special characters";
+            } else {
+                message_error.textContent = "";
+            }
+        });
 
         const name_input = document.getElementById("name");
         const name_error = document.getElementById("name_error");
