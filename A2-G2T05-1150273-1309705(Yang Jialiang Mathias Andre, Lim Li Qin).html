@@ -9,72 +9,122 @@
   <h1>Part 1</h1>
     <div>
         <table border="1px solid black" style="text-align: centre; border-spacing: 0px;">
-        <tr class="theader" style="background-color: #b0d2e7; padding: 20px;">
-            <th colspan="5" ><h2 style="margin: 0px; padding: 20px;">CSIT128: Assignment 2</h2></th>
-            <th colspan="1"><h2 style="margin: 0px; padding: 20px;">Group G2T05</h2></th>
-        </tr>
-        <tr class="student1" style="padding: 20px;">
-            <td colspan="2" rowspan="3" class="p1td" style="padding: 20px;">Student Number / <br> Name / Email</td>
-            <td colspan="1" class="p1td" style="padding: 20px;">1309705</td>
-            <td class="p1td" style="padding: 20px;">Lim Li Qin</td>
-            <td colspan="2" class="p1td" style="padding: 20px;">lql136@uowmail.edu.au</td>
-        </tr>
-        <tr class="student2" style="padding: 20px;">
-            <td colspan="1" class="p1td" style="padding: 20px;">1150273</td>
-            <td class="p1td" style="padding: 20px;">Yang Jialiang Mathias Andre</td>
-            <td colspan="2" class="p1td" style="padding: 20px;">jmay291@uowmail.edu.au</td>
-        </tr>
-    </table>
-    </div>
-    <div>
-        <table>
-            <tr>
-                <th colspan="3">
-                    Part 2: Game
-                </th>
+            <tr class="theader" style="background-color: #b0d2e7; padding: 20px;">\
+                <th colspan="5" ><h2 style="margin: 0px; padding: 20px;">CSIT128: Assignment 2</h2></th>
+                <th colspan="1"><h2 style="margin: 0px; padding: 20px;">Group G2T05</h2></th>
             </tr>
-            <tr>
-                <td>
-                    <label>Name:</label>
-                </td>
-                <td colspan="2">
-                    <input type="text"></input>
-                </td>
+            <tr class="student1" style="padding: 20px;">
+                <td colspan="2" rowspan="3" class="p1td" style="padding: 20px;">Student Number / <br> Name / Email</td>
+                <td colspan="1" class="p1td" style="padding: 20px;">1309705</td>
+                <td class="p1td" style="padding: 20px;">Lim Li Qin</td>
+                <td colspan="2" class="p1td" style="padding: 20px;">lql136@uowmail.edu.au</td>
             </tr>
-            <tr>
-                <td>
-                    <label>Your chosen character:</label>
-                </td>
-                <td>
-                    list box showing T,R,&,?,8,2>
-                </td>
-                <td>
-                    Current score: 0
-                </td>
-            </tr>
-            <tr>
-                <td colspan="1.5">
-                    <button>Start Game Button</button>
-                </td>
-                <td colspan="1.5">
-                    <button>Stop Game Button</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>First character</label>
-                </td>
-                <td>
-                    <label>Second character</label>
-                </td>
-                <td>
-                    <label>Third character</label>
-                </td>
-            </tr>
-            <tr>
-                <td>Player</td>
+            <tr class="student2" style="padding: 20px;">
+                <td colspan="1" class="p1td" style="padding: 20px;">1150273</td>
+                <td class="p1td" style="padding: 20px;">Yang Jialiang Mathias Andre</td>
+                <td colspan="2" class="p1td" style="padding: 20px;">jmay291@uowmail.edu.au</td>
             </tr>
         </table>
     </div>
+    <div>
+        <table style="border-collapse: collapse; margin: 20px auto; text-align: center;">
+            <tr>
+                <th colspan="3" style="border: 1px solid black; padding: 10px; background-color: #F7CAAC; font-weight: bold;">Part 2: Game</th>
+            </tr>
+            <tr style="border: 1px solid black; background-color: #F7CAAC; font-weight: bold; text-align: left;">
+                <th>Name:</th>
+                <th colspan="2"><input type="text" id="playerName"></th>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 10px; background-color: #DEEAF6;">Your chosen character:</td>
+                <td style="border: 1px solid black; padding: 10px; background-color: #DEEAF6;">
+                    <select id="chosenChar">
+                        <option value="T">T</option>
+                        <option value="R">R</option>
+                        <option value="&">&</option>
+                        <option value="?">?</option>
+                        <option value="8">8</option>
+                        <option value="2">2</option>
+                    </select>
+                </td>
+                <td style="border: 1px solid black; padding: 10px; font-weight: bold; background-color: #FFF2CC;">Current Score: <span id="score">0</span></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="border: 1px solid black; padding: 10px; background-color: #99FF99;">
+                    <button id="startBtn">Start Game</button>
+                    <button id="stopBtn">Stop Game</button>
+                </td>
+            </tr>
+            <tr style="font-size: 24px; cursor: pointer;">
+                <td id="char1" class="character" style="border: 1px solid black; padding: 10px; color: #BF8F00;"></td>
+                <td id="char2" class="character" style="border: 1px solid black; padding: 10px; color: #0000FF;"></td>
+                <td id="char3" class="character" style="border: 1px solid black; padding: 10px; color: #538135;"></td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="border: 1px solid black; padding: 10px;">Player (Score)</td>
+                <td id="playerList" style="border: 1px solid black; padding: 10px;"></td>
+                <td rowspan="2" style="border: 1px solid black; padding: 10px;"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+    const startBtn = document.getElementById("startBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const scoreDisplay = document.getElementById("score");
+    const playerNameInput = document.getElementById("playerName");
+    const chosenCharSelect = document.getElementById("chosenChar");
+    const playerList = document.getElementById("playerList");
+    const charCells = [document.getElementById("char1"), document.getElementById("char2"), document.getElementById("char3")];
+
+    let score = 0, chosenChar = "", intervalId = null;
+    let players = []; // store all players and scores
+
+    function generateCharacters() {
+      const chars = ["T","R","&","?","8","2","#","$","%"];
+      let selected = [];
+      while (selected.length < 3) {
+        let c = chars[Math.floor(Math.random() * chars.length)];
+        if (!selected.includes(c)) selected.push(c);
+      }
+      charCells.forEach((cell, i) => cell.textContent = selected[i]);
+    }
+
+    function updateScore(isCorrect) {
+      score += isCorrect ? 3 : -2;
+      scoreDisplay.textContent = score;
+    }
+
+    charCells.forEach(cell => {
+      cell.addEventListener("click", () => {
+        if (!intervalId) return; // only active during game
+        updateScore(cell.textContent === chosenChar);
+      });
+    });
+
+    startBtn.addEventListener("click", () => {
+      if (!playerNameInput.value) { alert("Please enter your name first!"); return; }
+      chosenChar = chosenCharSelect.value;
+      score = 0; scoreDisplay.textContent = score;
+      generateCharacters();
+      intervalId = setInterval(generateCharacters, 2000);
+    });
+
+    stopBtn.addEventListener("click", () => {
+      if (intervalId) {
+        clearInterval(intervalId); intervalId = null; // stop rotation
+        // Save player score
+        players.push({ name: playerNameInput.value, score: score });
+        // Sort by highest score
+        players.sort((a, b) => b.score - a.score);
+        // Refresh scoreboard
+        playerList.innerHTML = "";
+        players.forEach(p => {
+          const entry = document.createElement("div");
+          entry.textContent = `${p.name} (${p.score})`;
+          playerList.appendChild(entry);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
