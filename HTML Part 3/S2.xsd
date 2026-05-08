@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Root Element -->
+  <xs:element name="weatherForecast" type="weatherForecastType"/>
+
+  <!-- weatherForecast Type -->
+  <xs:complexType name="weatherForecastType">
+    <xs:sequence>
+      <xs:element name="location"    type="xs:string"/>
+      <xs:element name="lastUpdated" type="lastUpdatedType"/>
+      <xs:element name="forecasts"   type="forecastsType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- lastUpdated Type -->
+  <xs:complexType name="lastUpdatedType">
+    <xs:sequence>
+      <xs:element name="date"  type="dateType"/>
+      <xs:element name="month" type="monthType"/>
+      <xs:element name="year"  type="xs:positiveInteger"/>
+      <xs:element name="time"  type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- forecasts Type: contains one or more forecast elements -->
+  <xs:complexType name="forecastsType">
+    <xs:sequence>
+      <xs:element name="forecast" type="forecastType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Individual forecast Type -->
+  <xs:complexType name="forecastType">
+    <xs:sequence>
+      <xs:element name="forecastDate"  type="forecastDateType"/>
+      <xs:element name="temperature"   type="temperatureType"/>
+      <xs:element name="overallCode"   type="overallCodeType"/>
+      <xs:element name="description"   type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- forecastDate Type -->
+  <xs:complexType name="forecastDateType">
+    <xs:sequence>
+      <xs:element name="date"        type="dateType"/>
+      <xs:element name="month"       type="monthType"/>
+      <xs:element name="year"        type="xs:positiveInteger"/>
+      <xs:element name="displayDate" type="xs:string"/>
+      <xs:element name="dayOfWeek"   type="dayOfWeekType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- temperature Type -->
+  <xs:complexType name="temperatureType">
+    <xs:sequence>
+      <xs:element name="high" type="xs:integer"/>
+      <xs:element name="low"  type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Restriction: month must be 1 to 12 -->
+  <xs:simpleType name="monthType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Restriction: date must be 1 to 31 -->
+  <xs:simpleType name="dateType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="31"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Restriction: dayOfWeek must be one of the 7 valid values -->
+  <xs:simpleType name="dayOfWeekType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Mon"/>
+      <xs:enumeration value="Tues"/>
+      <xs:enumeration value="Wed"/>
+      <xs:enumeration value="Thur"/>
+      <xs:enumeration value="Fri"/>
+      <xs:enumeration value="Sat"/>
+      <xs:enumeration value="Sun"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Restriction: overallCode must be a recognised weather type -->
+  <xs:simpleType name="overallCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="cloudy"/>
+      <xs:enumeration value="thunderstorm"/>
+      <xs:enumeration value="rain"/>
+      <xs:enumeration value="sunny"/>
+      <xs:enumeration value="partlysunny"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
