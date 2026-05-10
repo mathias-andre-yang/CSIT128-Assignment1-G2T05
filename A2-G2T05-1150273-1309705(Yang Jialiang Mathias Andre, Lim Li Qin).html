@@ -1,399 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Part 2: Game</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part 2: Game</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    font-family: 'Calibri', 'Segoe UI', sans-serif;
-    background: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    padding-top: 100px;
-    align-items: center;
-    min-height: 100vh;
-  }
+    body {
+      font-family: 'Calibri', 'Segoe UI', sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      padding-top: 100px;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-  div {
-    padding: 20px;
-  }
+    div {
+      padding: 20px;
+    }
 
-  .part1, .game-wrapper {
-    width: 700px;
-    margin: 0 auto;
-  }
+    .part1,
+    .game-wrapper {
+      width: 700px;
+      margin: 0 auto;
+    }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 2px solid #999;
-    background: white;
-  }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid #999;
+      background: white;
+    }
 
-  td, th {
-    border: 1px solid #999;
-    padding: 8px 12px;
-    vertical-align: middle;
-  }
+    td,
+    th {
+      border: 1px solid #999;
+      padding: 8px 12px;
+      vertical-align: middle;
+    }
 
-  /* Title row */
-  .title-row td {
-    background: #F7CAAC;
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 12px;
-  }
+    /* Title row */
+    .title-row td {
+      background: #F7CAAC;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 12px;
+    }
 
-  /* Name row */
-  .name-row td {
-    background: #F7CAAC;
-    font-size: 15px;
-    font-weight: bold;
-  }
+    /* Name row */
+    .name-row td {
+      background: #F7CAAC;
+      font-size: 15px;
+      font-weight: bold;
+    }
 
-  .name-row input[type="text"] {
-    border: 1px solid #aaa;
-    padding: 4px 8px;
-    font-size: 14px;
-    width: 180px;
-  }
+    .name-row input[type="text"] {
+      border: 1px solid #aaa;
+      padding: 4px 8px;
+      font-size: 14px;
+      width: 180px;
+    }
 
-  /* Character & score row */
-  .char-row td {
-    background: #D6E8F5;
-    font-weight: bold;
-    font-size: 14px;
-  }
+    /* Character & score row */
+    .char-row td {
+      background: #D6E8F5;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-  .char-row td:first-child {
-    width: 200px;
-  }
+    .char-row td:first-child {
+      width: 200px;
+    }
 
-  .char-row .score-cell {
-    background: #FFFACD;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    width: 180px;
-  }
+    .char-row .score-cell {
+      background: #FFFACD;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      width: 180px;
+    }
 
-  .score-value {
-    color: red;
-    font-size: 18px;
-    font-weight: bold;
-  }
+    .score-value {
+      color: red;
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-  select#charSelect {
-    padding: 3px 6px;
-    font-size: 14px;
-    border: 1px solid #aaa;
-    width: 120px;
-    margin-left: 35px;
-  
-  }
+    select#charSelect {
+      padding: 3px 6px;
+      font-size: 14px;
+      border: 1px solid #aaa;
+      width: 120px;
+      margin-left: 35px;
 
-  /* Buttons row */
-  .btn-row td {
-    background: #99FF99;
-    text-align: center;
-    padding: 10px;
-  }
+    }
 
-  button {
-    padding: 6px 20px;
-    font-size: 14px;
-    border: 1px solid #666;
-    cursor: pointer;
-    border-radius: 3px;
-    margin: 0 20px;
-  }
+    /* Buttons row */
+    .btn-row td {
+      background: #99FF99;
+      text-align: center;
+      padding: 10px;
+    }
 
-  #btnStart {
-    background: #e8e8e8;
-  }
-  #btnStart:hover:not(:disabled) { background: #d0d0d0; }
-  #btnStop {
-    background: #e8e8e8;
-  }
-  #btnStop:hover:not(:disabled) { background: #d0d0d0; }
-  button:disabled { opacity: 0.5; cursor: not-allowed; }
+    button {
+      padding: 6px 20px;
+      font-size: 14px;
+      border: 1px solid #666;
+      cursor: pointer;
+      border-radius: 3px;
+      margin: 0 20px;
+    }
 
-  /* Characters display row */
-  .display-row td {
-    text-align: center;
-    font-size: 36px;
-    font-weight: bold;
-    padding: 18px 10px;
-    cursor: pointer;
-    user-select: none;
-    width: 33.33%;
-  }
+    #btnStart {
+      background: #e8e8e8;
+    }
 
-  .display-row td:nth-child(1) { color: #BF8F00; background: #fff; } /* gold */
-  .display-row td:nth-child(2) { color: #0000FF; background: #fff; } /* blue */
-  .display-row td:nth-child(3) { color: #538135; background: #fff; } /* green */
+    #btnStart:hover:not(:disabled) {
+      background: #d0d0d0;
+    }
 
-  .display-row td:hover:not(.inactive) {
-    filter: brightness(0.85);
-  }
+    #btnStop {
+      background: #e8e8e8;
+    }
 
-  .display-row td.inactive {
-    cursor: default;
-  }
+    #btnStop:hover:not(:disabled) {
+      background: #d0d0d0;
+    }
 
-  /* Leaderboard row */
-  .score-row td {
-    vertical-align: top;
-    padding: 10px 14px;
-    font-size: 14px;
-  }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
-  .score-row td:first-child {
-    font-weight: bold;
-    text-align: center;
-    background: #f9f9f9;
-    width: 33.33%;
-  }
+    /* Characters display row */
+    .display-row td {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      padding: 18px 10px;
+      cursor: pointer;
+      user-select: none;
+      width: 33.33%;
+    }
 
-  .score-row td:nth-child(2) {
-    width: 33.33%;
-    background: #fff;
-  }
+    .display-row td:nth-child(1) {
+      color: #BF8F00;
+      background: #fff;
+    }
 
-  .score-row td:nth-child(3) {
-    width: 33.33%;
-    background: #f9f9f9;
-  }
+    /* gold */
+    .display-row td:nth-child(2) {
+      color: #0000FF;
+      background: #fff;
+    }
 
-  .leaderboard {
-    list-style: disc;
-    padding-left: 20px;
-    margin: 0;
-  }
+    /* blue */
+    .display-row td:nth-child(3) {
+      color: #538135;
+      background: #fff;
+    }
 
-  .leaderboard li {
-    margin-bottom: 4px;
-  }
+    /* green */
 
-  /* Flash feedback */
-  .flash-green { background: #b6ffb6 !important; transition: background 0.2s; }
-  .flash-red   { background: #ffb6b6 !important; transition: background 0.2s; }
-</style>
+    .display-row td:hover:not(.inactive) {
+      filter: brightness(0.85);
+    }
+
+    .display-row td.inactive {
+      cursor: default;
+    }
+
+    /* Leaderboard row */
+    .score-row td {
+      vertical-align: top;
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+
+    .score-row td:first-child {
+      font-weight: bold;
+      text-align: center;
+      background: #f9f9f9;
+      width: 33.33%;
+    }
+
+    .score-row td:nth-child(2) {
+      width: 33.33%;
+      background: #fff;
+    }
+
+    .score-row td:nth-child(3) {
+      width: 33.33%;
+      background: #f9f9f9;
+    }
+
+    .leaderboard {
+      list-style: disc;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .leaderboard li {
+      margin-bottom: 4px;
+    }
+
+    /* Flash feedback */
+    .flash-green {
+      background: #b6ffb6 !important;
+      transition: background 0.2s;
+    }
+
+    .flash-red {
+      background: #ffb6b6 !important;
+      transition: background 0.2s;
+    }
+  </style>
 </head>
+
 <body>
-<h1>Part 1</h1>
-<div class="part1">
+  <h1>Part 1</h1>
+  <div class="part1">
     <table border="1px solid black" style="text-align: centre; border-spacing: 0px;">
-        <tr class="theader" style="background-color: #b0d2e7; padding: 20px;">
-            <th colspan="5" ><h2 style="margin: 0px; padding: 20px;">CSIT128: Assignment 2</h2></th>
-            <th colspan="1"><h2 style="margin: 0px; padding: 20px;">Group G2T05</h2></th>
-        </tr>
-        <tr class="student1" style="padding: 20px;">
-            <td colspan="2" rowspan="2" class="p1td" style="padding: 20px;">Student Number / <br> Name / Email</td>
-            <td colspan="1" class="p1td" style="padding: 20px;">1309705</td>
-            <td class="p1td" style="padding: 20px;">Lim Li Qin</td>
-            <td colspan="2" class="p1td" style="padding: 20px;">lql136@uowmail.edu.au</td>
-        </tr>
-        <tr class="student2" style="padding: 20px;">
-            <td colspan="1" class="p1td" style="padding: 20px;">1150273</td>
-            <td class="p1td" style="padding: 20px;">Yang Jialiang Mathias Andre</td>
-            <td colspan="2" class="p1td" style="padding: 20px;">jmay291@uowmail.edu.au</td>
-        </tr>
+      <tr class="theader" style="background-color: #b0d2e7; padding: 20px;">
+        <th colspan="5">
+          <h2 style="margin: 0px; padding: 20px;">CSIT128: Assignment 2</h2>
+        </th>
+        <th colspan="1">
+          <h2 style="margin: 0px; padding: 20px;">Group G2T05</h2>
+        </th>
+      </tr>
+      <tr class="student1" style="padding: 20px;">
+        <td colspan="2" rowspan="2" class="p1td" style="padding: 20px;">Student Number / <br> Name / Email</td>
+        <td colspan="1" class="p1td" style="padding: 20px;">1309705</td>
+        <td class="p1td" style="padding: 20px;">Lim Li Qin</td>
+        <td colspan="2" class="p1td" style="padding: 20px;">lql136@uowmail.edu.au</td>
+      </tr>
+      <tr class="student2" style="padding: 20px;">
+        <td colspan="1" class="p1td" style="padding: 20px;">1150273</td>
+        <td class="p1td" style="padding: 20px;">Yang Jialiang Mathias Andre</td>
+        <td colspan="2" class="p1td" style="padding: 20px;">jmay291@uowmail.edu.au</td>
+      </tr>
     </table>
-</div>
-<div class="game-wrapper">
-<table>
-  <!-- Title -->
-  <tr class="title-row">
-    <td colspan="3">Part 2: Game</td>
-  </tr>
+  </div>
+  <div class="game-wrapper">
+    <table>
+      <!-- Title -->
+      <tr class="title-row">
+        <td colspan="3">Part 2: Game</td>
+      </tr>
 
-  <!-- Name -->
-  <tr class="name-row">
-    <td colspan="3">
-      <label for="playerName"><strong>Name:</strong></label>&nbsp;&nbsp;
-      <input type="text" id="playerName" placeholder="" maxlength="40">
-    </td>
-  </tr>
+      <!-- Name -->
+      <tr class="name-row">
+        <td colspan="3">
+          <label for="playerName"><strong>Name:</strong></label>&nbsp;&nbsp;
+          <input type="text" id="playerName" placeholder="" maxlength="40">
+        </td>
+      </tr>
 
-  <!-- Chosen character & score -->
-  <tr class="char-row">
-    <td><strong>Your chosen character:</strong></td>
-    <td>
-      <select id="charSelect">
-        <option value="T">T</option>
-        <option value="R">R</option>
-        <option value="&amp;">&amp;</option>
-        <option value="?">?</option>
-        <option value="8">8</option>
-        <option value="2">2</option>
-      </select>
-    </td>
-    <td class="score-cell"><strong>Current Score: <span id="scoreDisplay" class="score-value">0</span></strong></td>
-  </tr>
+      <!-- Chosen character & score -->
+      <tr class="char-row">
+        <td><strong>Your chosen character:</strong></td>
+        <td>
+          <select id="charSelect">
+            <option value="T">T</option>
+            <option value="R">R</option>
+            <option value="&amp;">&amp;</option>
+            <option value="?">?</option>
+            <option value="8">8</option>
+            <option value="2">2</option>
+          </select>
+        </td>
+        <td class="score-cell"><strong>Current Score: <span id="scoreDisplay" class="score-value">0</span></strong></td>
+      </tr>
 
-  <!-- Buttons -->
-  <tr class="btn-row">
-    <td colspan="3">
-      <button id="btnStart" disabled>Start Game</button>
-      <button id="btnStop" disabled>Stop Game</button>
-    </td>
-  </tr>
+      <!-- Buttons -->
+      <tr class="btn-row">
+        <td colspan="3">
+          <button id="btnStart" disabled>Start Game</button>
+          <button id="btnStop" disabled>Stop Game</button>
+        </td>
+      </tr>
 
-  <!-- Character display -->
-  <tr class="display-row" id="charDisplay">
-    <td id="char1" class="inactive">&nbsp;</td>
-    <td id="char2" class="inactive">&nbsp;</td>
-    <td id="char3" class="inactive">&nbsp;</td>
-  </tr>
+      <!-- Character display -->
+      <tr class="display-row" id="charDisplay">
+        <td id="char1" class="inactive">&nbsp;</td>
+        <td id="char2" class="inactive">&nbsp;</td>
+        <td id="char3" class="inactive">&nbsp;</td>
+      </tr>
 
-  <!-- Leaderboard -->
-  <tr class="score-row">
-    <td style="height: 85px; font-size: large; vertical-align: middle; ">Player (Score)</td>
-    <td id="leaderboardCol" colspan="2">
-      <ul class="leaderboard" id="leaderboard"></ul>
-    </td>
-  </tr>
-</table>
-</div>
+      <!-- Leaderboard -->
+      <tr class="score-row">
+        <td style="height: 85px; font-size: large; vertical-align: middle; ">Player (Score)</td>
+        <td id="leaderboardCol" colspan="2">
+          <ul class="leaderboard" id="leaderboard"></ul>
+        </td>
+      </tr>
+    </table>
+  </div>
 
-<script>
-  const ALL_CHARS = ['T', 'R', '&', '?', '8', '2', '#', '@', '%', '!'];
-  // The pool for random generation includes extras so we get variety
-  const GEN_POOL = ['T', 'R', '&', '?', '8', '2', '#', '@', '%', '!'];
+  <script>
+    const ALL_CHARS = ['T', 'R', '&', '?', '8', '2', '#', '@', '%', '!'];
+    // The pool for random generation includes extras so we get variety
+    const GEN_POOL = ['T', 'R', '&', '?', '8', '2', '#', '@', '%', '!'];
 
-  let score = 0;
-  let gameRunning = false;
-  let gameInterval = null;
-  let chosenChar = '';
-  let currentChars = ['', '', ''];
-  let players = [];
+    let score = 0;
+    let gameRunning = false;
+    let gameInterval = null;
+    let chosenChar = '';
+    let currentChars = ['', '', ''];
+    let players = [];
 
-  const playerNameEl = document.getElementById('playerName');
-  const charSelect = document.getElementById('charSelect');
-  const scoreDisplay = document.getElementById('scoreDisplay');
-  const btnStart = document.getElementById('btnStart');
-  const btnStop = document.getElementById('btnStop');
-  const char1 = document.getElementById('char1');
-  const char2 = document.getElementById('char2');
-  const char3 = document.getElementById('char3');
-  const leaderboard = document.getElementById('leaderboard');
-  const charCells = [char1, char2, char3];
+    const playerNameEl = document.getElementById('playerName');
+    const charSelect = document.getElementById('charSelect');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const btnStart = document.getElementById('btnStart');
+    const btnStop = document.getElementById('btnStop');
+    const char1 = document.getElementById('char1');
+    const char2 = document.getElementById('char2');
+    const char3 = document.getElementById('char3');
+    const leaderboard = document.getElementById('leaderboard');
+    const charCells = [char1, char2, char3];
 
-  // Enable/disable based on name
-  playerNameEl.addEventListener('input', () => {
-    const hasName = playerNameEl.value.trim().length > 0;
-    btnStart.disabled = !hasName;
-    // Stop stays disabled unless game is running
-  });
-
-  function generateThreeChars() {
-    // Must include chosen char at least once, and no repeats
-    const pool = [...GEN_POOL];
-    let result = [];
-    // Shuffle pool
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
-    }
-    // Pick 3 unique from pool
-    result = pool.slice(0, 3);
-    // Ensure chosen char is among them (replace random position if not there)
-    if (!result.includes(chosenChar)) {
-      const replaceIdx = Math.floor(Math.random() * 3);
-      result[replaceIdx] = chosenChar;
-    }
-    return result;
-  }
-
-  function updateCharDisplay() {
-    for (let i = 0; i < 3; i++) {
-      charCells[i].textContent = currentChars[i];
-    }
-  }
-
-  function flashCell(cell, type) {
-    cell.classList.add(type === 'win' ? 'flash-green' : 'flash-red');
-    setTimeout(() => {
-      cell.classList.remove('flash-green', 'flash-red');
-    }, 300);
-  }
-
-  function handleCharClick(index) {
-    if (!gameRunning) return;
-    const clicked = currentChars[index];
-    if (clicked === chosenChar) {
-      score += 3;
-      flashCell(charCells[index], 'win');
-    } else {
-      score -= 2;
-      flashCell(charCells[index], 'lose');
-    }
-    scoreDisplay.textContent = score;
-  }
-
-  charCells.forEach((cell, i) => {
-    cell.addEventListener('click', () => handleCharClick(i));
-  });
-
-  btnStart.addEventListener('click', () => {
-    const name = playerNameEl.value.trim();
-    if (!name) return;
-
-    // Reset score
-    score = 0;
-    scoreDisplay.textContent = '0';
-    chosenChar = charSelect.value;
-
-    // Lock character selection
-    charSelect.disabled = true;
-    btnStart.disabled = true;
-    btnStop.disabled = false;
-    gameRunning = true;
-
-    // Remove inactive class
-    charCells.forEach(c => c.classList.remove('inactive'));
-
-    // Start interval
-    function tick() {
-      currentChars = generateThreeChars();
-      updateCharDisplay();
-    }
-    tick();
-    gameInterval = setInterval(tick, 2000);
-  });
-
-  btnStop.addEventListener('click', () => {
-    if (!gameRunning) return;
-    clearInterval(gameInterval);
-    gameInterval = null;
-    gameRunning = false;
-
-    // Re-enable controls
-    charSelect.disabled = false;
-    btnStop.disabled = true;
-    btnStart.disabled = false;
-
-    charCells.forEach(c => c.classList.add('inactive'));
-
-    // Save player score
-    const name = playerNameEl.value.trim();
-    players.push({ name, score });
-    renderLeaderboard();
-  });
-
-  function renderLeaderboard() {
-    leaderboard.innerHTML = '';
-    players.forEach(p => {
-      const li = document.createElement('li');
-      li.textContent = `${p.name} (${p.score})`;
-      leaderboard.appendChild(li);
+    // Enable/disable based on name
+    playerNameEl.addEventListener('input', () => {
+      const hasName = playerNameEl.value.trim().length > 0;
+      btnStart.disabled = !hasName;
+      // Stop stays disabled unless game is running
     });
-  }
-</script>
+
+    function generateThreeChars() {
+      // Must include chosen char at least once, and no repeats
+      const pool = [...GEN_POOL];
+      let result = [];
+      // Shuffle pool
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      // Pick 3 unique from pool
+      result = pool.slice(0, 3);
+      // Ensure chosen char is among them (replace random position if not there)
+      if (!result.includes(chosenChar)) {
+        const replaceIdx = Math.floor(Math.random() * 3);
+        result[replaceIdx] = chosenChar;
+      }
+      return result;
+    }
+
+    function updateCharDisplay() {
+      for (let i = 0; i < 3; i++) {
+        charCells[i].textContent = currentChars[i];
+      }
+    }
+
+    function flashCell(cell, type) {
+      cell.classList.add(type === 'win' ? 'flash-green' : 'flash-red');
+      setTimeout(() => {
+        cell.classList.remove('flash-green', 'flash-red');
+      }, 300);
+    }
+
+    function handleCharClick(index) {
+      if (!gameRunning) return;
+      const clicked = currentChars[index];
+      if (clicked === chosenChar) {
+        score += 3;
+        flashCell(charCells[index], 'win');
+      } else {
+        score -= 2;
+        flashCell(charCells[index], 'lose');
+      }
+      scoreDisplay.textContent = score;
+    }
+
+    charCells.forEach((cell, i) => {
+      cell.addEventListener('click', () => handleCharClick(i));
+    });
+
+    btnStart.addEventListener('click', () => {
+      const name = playerNameEl.value.trim();
+      if (!name) return;
+
+      // Reset score
+      score = 0;
+      scoreDisplay.textContent = '0';
+      chosenChar = charSelect.value;
+
+      // Lock character selection
+      charSelect.disabled = true;
+      btnStart.disabled = true;
+      btnStop.disabled = false;
+      gameRunning = true;
+
+      // Remove inactive class
+      charCells.forEach(c => c.classList.remove('inactive'));
+
+      // Start interval
+      function tick() {
+        currentChars = generateThreeChars();
+        updateCharDisplay();
+      }
+      tick();
+      gameInterval = setInterval(tick, 2000);
+    });
+
+    btnStop.addEventListener('click', () => {
+      if (!gameRunning) return;
+      clearInterval(gameInterval);
+      gameInterval = null;
+      gameRunning = false;
+
+      // Re-enable controls
+      charSelect.disabled = false;
+      btnStop.disabled = true;
+      btnStart.disabled = false;
+
+      charCells.forEach(c => c.classList.add('inactive'));
+
+      // Save player score
+      const name = playerNameEl.value.trim();
+      players.push({ name, score });
+      renderLeaderboard();
+    });
+
+    function renderLeaderboard() {
+      leaderboard.innerHTML = '';
+      players.forEach(p => {
+        const li = document.createElement('li');
+        li.textContent = `${p.name} (${p.score})`;
+        leaderboard.appendChild(li);
+      });
+    }
+  </script>
 </body>
+
 </html>
