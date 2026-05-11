@@ -3,88 +3,24 @@
 <weatherForecast>
   <location>Singapore</location>
   <lastUpdated>
-    <date>01</date>
-    <month>08</month>
-    <year>20</year>
-    <time>10:00 PM</time>
+    <date>17</date>
+    <month>04</month>
+    <year>26</year>
+    <time>4:30 PM</time>
   </lastUpdated>
   <forecasts>
 
     <forecast>
       <forecastDate>
         <date>30</date>
-        <month>7</month>
-        <year>2020</year>
-        <displayDate>30 Jul</displayDate>
-        <dayOfWeek>Wed</dayOfWeek>
-      </forecastDate>
-      <temperature>
-        <high>32</high>
-        <low>28</low>
-      </temperature>
-      <overallCode>sunny</overallCode>
-      <description>Plenty of sunshine</description>
-    </forecast>
-
-    <forecast>
-      <forecastDate>
-        <date>10</date>
-        <month>7</month>
-        <year>2020</year>
-        <displayDate>10 Jul</displayDate>
-        <dayOfWeek>Fri</dayOfWeek>
-      </forecastDate>
-      <temperature>
-        <high>33</high>
-        <low>29</low>
-      </temperature>
-      <overallCode>partlysunny</overallCode>
-      <description>Partly sunny</description>
-    </forecast>
-
-    <forecast>
-      <forecastDate>
-        <date>6</date>
-        <month>7</month>
-        <year>2020</year>
-        <displayDate>06 Jul</displayDate>
-        <dayOfWeek>Mon</dayOfWeek>
+        <month>11</month>
+        <year>2025</year>
+        <displayDate>30 Nov</displayDate>
+        <dayOfWeek>Sun</dayOfWeek>
       </forecastDate>
       <temperature>
         <high>34</high>
         <low>30</low>
-      </temperature>
-      <overallCode>sunny</overallCode>
-      <description>Plenty of sunshine</description>
-    </forecast>
-
-    <forecast>
-      <forecastDate>
-        <date>28</date>
-        <month>6</month>
-        <year>2020</year>
-        <displayDate>28 Jun</displayDate>
-        <dayOfWeek>Sun</dayOfWeek>
-      </forecastDate>
-      <temperature>
-        <high>30</high>
-        <low>22</low>
-      </temperature>
-      <overallCode>rain</overallCode>
-      <description>A morning shower, then rain</description>
-    </forecast>
-
-    <forecast>
-      <forecastDate>
-        <date>16</date>
-        <month>6</month>
-        <year>2020</year>
-        <displayDate>16 Jun</displayDate>
-        <dayOfWeek>Tues</dayOfWeek>
-      </forecastDate>
-      <temperature>
-        <high>30</high>
-        <low>25</low>
       </temperature>
       <overallCode>cloudy</overallCode>
       <description>Considerable clouds</description>
@@ -92,18 +28,82 @@
 
     <forecast>
       <forecastDate>
-        <date>12</date>
+        <date>15</date>
         <month>6</month>
-        <year>2020</year>
-        <displayDate>12 Jun</displayDate>
-        <dayOfWeek>Fri</dayOfWeek>
+        <year>2025</year>
+        <displayDate>15 Jun</displayDate>
+        <dayOfWeek>Sun</dayOfWeek>
       </forecastDate>
       <temperature>
         <high>29</high>
-        <low>23</low>
+        <low>26</low>
       </temperature>
       <overallCode>thunderstorm</overallCode>
       <description>Cloudy with a thunderstorm</description>
+    </forecast>
+
+    <forecast>
+      <forecastDate>
+        <date>14</date>
+        <month>10</month>
+        <year>2025</year>
+        <displayDate>14 Oct</displayDate>
+        <dayOfWeek>Tues</dayOfWeek>
+      </forecastDate>
+      <temperature>
+        <high>36</high>
+        <low>31</low>
+      </temperature>
+      <overallCode>rain</overallCode>
+      <description>Afternoon shower</description>
+    </forecast>
+
+    <forecast>
+      <forecastDate>
+        <date>9</date>
+        <month>7</month>
+        <year>2025</year>
+        <displayDate>9 Jul</displayDate>
+        <dayOfWeek>Wed</dayOfWeek>
+      </forecastDate>
+      <temperature>
+        <high>35</high>
+        <low>30</low>
+      </temperature>
+      <overallCode>rain</overallCode>
+      <description>A morning shower, then rain</description>
+    </forecast>
+
+    <forecast>
+      <forecastDate>
+        <date>10</date>
+        <month>4</month>
+        <year>2025</year>
+        <displayDate>10 Apr</displayDate>
+        <dayOfWeek>Thur</dayOfWeek>
+      </forecastDate>
+      <temperature>
+        <high>33</high>
+        <low>31</low>
+      </temperature>
+      <overallCode>partlysunny</overallCode>
+      <description>Partly sunny</description>
+    </forecast>
+
+    <forecast>
+      <forecastDate>
+        <date>8</date>
+        <month>12</month>
+        <year>2025</year>
+        <displayDate>8 Dec</displayDate>
+        <dayOfWeek>Mon</dayOfWeek>
+      </forecastDate>
+      <temperature>
+        <high>35</high>
+        <low>32</low>
+      </temperature>
+      <overallCode>sunny</overallCode>
+      <description>Plenty of sunshine</description>
     </forecast>
 
   </forecasts>
