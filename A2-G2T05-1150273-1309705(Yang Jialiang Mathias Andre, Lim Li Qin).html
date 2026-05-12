@@ -46,7 +46,6 @@
       vertical-align: middle;
     }
 
-    /* Title row */
     .title-row td {
       background: #F7CAAC;
       text-align: center;
@@ -55,7 +54,6 @@
       padding: 12px;
     }
 
-    /* Name row */
     .name-row td {
       background: #F7CAAC;
       font-size: 15px;
@@ -69,7 +67,6 @@
       width: 180px;
     }
 
-    /* Character & score row */
     .char-row td {
       background: #D6E8F5;
       font-weight: bold;
@@ -103,7 +100,6 @@
 
     }
 
-    /* Buttons row */
     .btn-row td {
       background: #99FF99;
       text-align: center;
@@ -140,7 +136,6 @@
       cursor: not-allowed;
     }
 
-    /* Characters display row */
     .display-row td {
       text-align: center;
       font-size: 36px;
@@ -156,19 +151,15 @@
       background: #fff;
     }
 
-    /* gold */
     .display-row td:nth-child(2) {
       color: #0000FF;
       background: #fff;
     }
 
-    /* blue */
     .display-row td:nth-child(3) {
       color: #538135;
       background: #fff;
     }
-
-    /* green */
 
     .display-row td:hover:not(.inactive) {
       filter: brightness(0.85);
@@ -178,7 +169,6 @@
       cursor: default;
     }
 
-    /* Leaderboard row */
     .score-row td {
       vertical-align: top;
       padding: 10px 14px;
@@ -212,7 +202,6 @@
       margin-bottom: 4px;
     }
 
-    /* Flash feedback */
     .flash-green {
       background: #b6ffb6 !important;
       transition: background 0.2s;
@@ -265,7 +254,6 @@
         </td>
       </tr>
 
-      <!-- Chosen character & score -->
       <tr class="char-row">
         <td><strong>Your chosen character:</strong></td>
         <td>
@@ -281,7 +269,6 @@
         <td class="score-cell"><strong>Current Score: <span id="scoreDisplay" class="score-value">0</span></strong></td>
       </tr>
 
-      <!-- Buttons -->
       <tr class="btn-row">
         <td colspan="3">
           <button id="btnStart" disabled>Start Game</button>
@@ -289,14 +276,12 @@
         </td>
       </tr>
 
-      <!-- Character display -->
       <tr class="display-row" id="charDisplay">
         <td id="char1" class="inactive">&nbsp;</td>
         <td id="char2" class="inactive">&nbsp;</td>
         <td id="char3" class="inactive">&nbsp;</td>
       </tr>
 
-      <!-- Leaderboard -->
       <tr class="score-row">
         <td style="height: 85px; font-size: large; vertical-align: middle; ">Player (Score)</td>
         <td id="leaderboardCol" colspan="2">
@@ -328,25 +313,20 @@
     const leaderboard = document.getElementById('leaderboard');
     const charCells = [char1, char2, char3];
 
-    // Enable/disable based on name
     playerNameEl.addEventListener('input', () => {
       const hasName = playerNameEl.value.trim().length > 0;
       btnStart.disabled = !hasName;
-      // Stop stays disabled unless game is running
     });
 
     function generateThreeChars() {
-      // Must include chosen char at least once, and no repeats
       const pool = [...GEN_POOL];
       let result = [];
-      // Shuffle pool
       for (let i = pool.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [pool[i], pool[j]] = [pool[j], pool[i]];
       }
-      // Pick 3 unique from pool
+
       result = pool.slice(0, 3);
-      // Ensure chosen char is among them (replace random position if not there)
       if (!result.includes(chosenChar)) {
         const replaceIdx = Math.floor(Math.random() * 3);
         result[replaceIdx] = chosenChar;
@@ -388,21 +368,17 @@
       const name = playerNameEl.value.trim();
       if (!name) return;
 
-      // Reset score
       score = 0;
       scoreDisplay.textContent = '0';
       chosenChar = charSelect.value;
 
-      // Lock character selection
       charSelect.disabled = true;
       btnStart.disabled = true;
       btnStop.disabled = false;
       gameRunning = true;
 
-      // Remove inactive class
       charCells.forEach(c => c.classList.remove('inactive'));
 
-      // Start interval
       function tick() {
         currentChars = generateThreeChars();
         updateCharDisplay();
@@ -417,14 +393,12 @@
       gameInterval = null;
       gameRunning = false;
 
-      // Re-enable controls
       charSelect.disabled = false;
       btnStop.disabled = true;
       btnStart.disabled = false;
 
       charCells.forEach(c => c.classList.add('inactive'));
 
-      // Save player score
       const name = playerNameEl.value.trim();
       players.push({ name, score });
       renderLeaderboard();

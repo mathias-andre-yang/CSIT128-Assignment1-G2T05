@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <!-- Root Element -->
   <xs:element name="weatherForecast" type="weatherForecastType"/>
 
-  <!-- weatherForecast Type -->
   <xs:complexType name="weatherForecastType">
     <xs:sequence>
       <xs:element name="location"    type="xs:string"/>
@@ -13,7 +11,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- lastUpdated Type -->
   <xs:complexType name="lastUpdatedType">
     <xs:sequence>
       <xs:element name="date"  type="dateType"/>
@@ -23,14 +20,12 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- forecasts Type: contains one or more forecast elements -->
   <xs:complexType name="forecastsType">
     <xs:sequence>
       <xs:element name="forecast" type="forecastType" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Individual forecast Type -->
   <xs:complexType name="forecastType">
     <xs:sequence>
       <xs:element name="forecastDate"  type="forecastDateType"/>
@@ -40,7 +35,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- forecastDate Type -->
   <xs:complexType name="forecastDateType">
     <xs:sequence>
       <xs:element name="date"        type="dateType"/>
@@ -51,7 +45,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- temperature Type -->
   <xs:complexType name="temperatureType">
     <xs:sequence>
       <xs:element name="high" type="xs:integer"/>
@@ -59,7 +52,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Restriction: month must be 1 to 12 -->
   <xs:simpleType name="monthType">
     <xs:restriction base="xs:integer">
       <xs:minInclusive value="1"/>
@@ -67,7 +59,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Restriction: date must be 1 to 31 -->
   <xs:simpleType name="dateType">
     <xs:restriction base="xs:integer">
       <xs:minInclusive value="1"/>
@@ -75,7 +66,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Restriction: dayOfWeek must be one of the 7 valid values -->
   <xs:simpleType name="dayOfWeekType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Mon"/>
@@ -88,7 +78,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- Restriction: overallCode must be a recognised weather type -->
   <xs:simpleType name="overallCodeType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="cloudy"/>

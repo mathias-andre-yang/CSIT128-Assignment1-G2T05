@@ -6,7 +6,6 @@
               doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"
               doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 
-  <!-- ROOT TEMPLATE -->
   <xsl:template match="/">
     <html>
       <head>
@@ -125,8 +124,6 @@
     </html>
   </xsl:template>
 
-
-  <!-- TEMPLATE: one table row per forecast -->
   <xsl:template name="forecastRow">
     <tr>
       <td><xsl:value-of select="forecastDate/displayDate"/></td>
@@ -175,8 +172,6 @@
     </tr>
   </xsl:template>
 
-
-  <!-- TEMPLATE: weather cell content (temp, image, description) -->
   <xsl:template name="weatherCell">
     <xsl:variable name="code" select="overallCode"/>
 
